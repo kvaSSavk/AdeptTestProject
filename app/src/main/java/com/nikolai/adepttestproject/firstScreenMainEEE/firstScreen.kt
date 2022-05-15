@@ -13,7 +13,7 @@ import com.nikolai.adepttestproject.R
 import com.nikolai.adepttestproject.calculator.culculatorVirwModel
 
 class FirstScreen: Fragment() {
-    private val viewModel = culculatorVirwModel()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,20 +28,13 @@ class FirstScreen: Fragment() {
 
 
         val calculatorButton = view.findViewById<Button>(R.id.button_to_calculator)
-        val calculatorFirstNumber = view.findViewById<EditText>(R.id.button_to_calculator)
-        val calculatorSecondNumber = view.findViewById<EditText>(R.id.button_to_calculator)
+
 
 
         calculatorButton.setOnClickListener {
             findNavController().navigate(R.id.action_firstScreen_to_calculator)
         }
 
-        calculatorFirstNumber.addTextChangedListener { fieldValue ->
-            viewModel.updateFirstNumber(fieldValue.toString())
-        }
 
-        calculatorSecondNumber.addTextChangedListener { fieldValue->
-            viewModel.updateFirstNumber(fieldValue.toString())
-        }
     }
 }

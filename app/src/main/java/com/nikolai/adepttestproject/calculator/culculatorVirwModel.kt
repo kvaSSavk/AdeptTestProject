@@ -4,8 +4,11 @@ class culculatorVirwModel {
     private var currentFirstNumber: String = ""
     private var currentSecondNumber: String = ""
 
-    fun add(numberOne: Int, numberTwo: Int): Int {
-        return 0
+    fun add(): Int {
+        return currentFirstNumber.toInt() + currentSecondNumber.toInt()
+    }
+    fun destroy(): Int {
+        return currentFirstNumber.toInt() - currentSecondNumber.toInt()
     }
 
     fun updateFirstNumber(value: String) {
