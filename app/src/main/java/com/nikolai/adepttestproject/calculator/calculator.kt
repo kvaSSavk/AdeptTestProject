@@ -9,8 +9,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.nikolai.adepttestproject.R
 
 class Calculator: Fragment() {
@@ -31,16 +29,30 @@ class Calculator: Fragment() {
 
         val buttonAdd = view.findViewById<Button>(R.id.buttonPlus)
         val buttonSub = view.findViewById<Button>(R.id.buttonMinus)
-        
-        val resaltTxte = view.findViewById<TextView>(R.id.textView)
+        val buttonDelit = view.findViewById<Button>(R.id.buttonDelit)
+        val buttonUmnosit = view.findViewById<Button>(R.id.buttonUmnosit)
+
+        val resaltText = view.findViewById<TextView>(R.id.textView)
 
         buttonSub.setOnClickListener {
             val resultVaue = viewModel.destroy()
-            resaltTxte.text = resultVaue.toString()
+            resaltText.text = resultVaue.toString()
         }
         buttonAdd.setOnClickListener {
             val resultVaue = viewModel.add()
-            resaltTxte.text = resultVaue.toString()
+            resaltText.text = resultVaue.toString()
+        }
+        buttonDelit.setOnClickListener {
+            try {
+                val resultVaue = viewModel.delit()
+                resaltText.text = resultVaue.toString()
+            } catch (error: Exception) {
+                resaltText.text = error.message
+            }
+        }
+        buttonUmnosit.setOnClickListener {
+            val resultVaue = viewModel.add()
+            resaltText.text = resultVaue.toString()
         }
 
         calculatorFirstNumber.addTextChangedListener { fieldValue ->
