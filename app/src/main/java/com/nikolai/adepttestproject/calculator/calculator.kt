@@ -24,8 +24,8 @@ class Calculator: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val calculatorFirstNumber = view.findViewById<EditText>(R.id.button_to_calculator)
-        val calculatorSecondNumber = view.findViewById<EditText>(R.id.button_to_calculator)
+        val calculatorFirstNumber = view.findViewById<EditText>(R.id.textNumber1)
+        val calculatorSecondNumber = view.findViewById<EditText>(R.id.textNumber2)
 
         val buttonAdd = view.findViewById<Button>(R.id.buttonPlus)
         val buttonSub = view.findViewById<Button>(R.id.buttonMinus)
@@ -35,12 +35,20 @@ class Calculator: Fragment() {
         val resaltText = view.findViewById<TextView>(R.id.textView)
 
         buttonSub.setOnClickListener {
-            val resultVaue = viewModel.destroy()
-            resaltText.text = resultVaue.toString()
+            try {
+                val resultVaue = viewModel.destroy()
+                resaltText.text = resultVaue.toString()
+            }  catch (error: Exception) {
+                resaltText.text = error.message
+            }
         }
         buttonAdd.setOnClickListener {
+            try {
             val resultVaue = viewModel.add()
             resaltText.text = resultVaue.toString()
+            }  catch (error: Exception) {
+                resaltText.text = error.message
+            }
         }
         buttonDelit.setOnClickListener {
             try {
@@ -51,8 +59,12 @@ class Calculator: Fragment() {
             }
         }
         buttonUmnosit.setOnClickListener {
+            try {
             val resultVaue = viewModel.add()
             resaltText.text = resultVaue.toString()
+            }  catch (error: Exception) {
+                resaltText.text = error.message
+            }
         }
 
         calculatorFirstNumber.addTextChangedListener { fieldValue ->

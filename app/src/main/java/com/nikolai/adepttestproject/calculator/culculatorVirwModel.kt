@@ -5,12 +5,15 @@ class culculatorVirwModel {
     private var currentSecondNumber: String = ""
 
     fun add(): Int {
+        errorChecer()
         return currentFirstNumber.toInt() + currentSecondNumber.toInt()
     }
     fun destroy(): Int {
+        errorChecer()
         return currentFirstNumber.toInt() - currentSecondNumber.toInt()
     }
     fun delit(): Int {
+        errorChecer()
         var iO = currentSecondNumber.toInt()
         if (iO != 0) {
             return currentFirstNumber.toInt() / currentSecondNumber.toInt()
@@ -19,6 +22,7 @@ class culculatorVirwModel {
         }
     }
     fun umnosit(): Int {
+        errorChecer()
         return currentFirstNumber.toInt() * currentSecondNumber.toInt()
     }
 
@@ -27,6 +31,12 @@ class culculatorVirwModel {
     }
     fun updateSecondNumber(value: String) {
         currentSecondNumber = value
+    }
+
+    fun errorChecer() {
+        if (currentFirstNumber == "" || currentSecondNumber == "") {
+            throw Exception ("Это твй личный СааС, иди пожуй соплей")
+        }
     }
 
 
